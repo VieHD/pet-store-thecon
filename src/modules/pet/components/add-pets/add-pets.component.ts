@@ -10,15 +10,24 @@ export class AddPetsComponent implements OnInit {
   newPetForm!: FormGroup;
   constructor() {
     this.newPetForm = new FormGroup({
-      petNameControl : new FormControl(null, Validators.required)
+      petNameControl : new FormControl(null, Validators.required),
+      stateControl: new FormControl('Available', Validators.required),
+      petIdControl : new FormControl(null, Validators.required),
     });
    }
 
   ngOnInit(): void {
+    
   }
 
-  onAddPet(){
+  stats = ['Available', 'Pending', 'Sold']
 
+  // openDialog(): void{
+  //   this.dialog.open(DialogComponent, {})
+  // }
+
+  onAddPet(){
+    console.log(this.newPetForm.value);
   }
 
 }
