@@ -52,6 +52,11 @@ export class AddPetsComponent implements OnInit {
 
       },
     };
+    if(this.newPetForm.invalid){
+      this._snackBar.open('Please fill required fields!', 'Ok',{
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+    });}
 
     if(this.newPetForm.valid){
       this.petService

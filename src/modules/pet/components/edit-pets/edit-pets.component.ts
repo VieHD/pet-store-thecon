@@ -56,6 +56,12 @@ export class EditPetsComponent implements OnInit {
       },
     };
 
+    if(this.editPetForm.invalid){
+      this._snackBar.open('Please fill required fields!', 'Ok',{
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+    });}
+
     if(this.editPetForm.valid){
       console.log(editPet)
       this.petService

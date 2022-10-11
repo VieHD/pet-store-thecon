@@ -53,7 +53,7 @@ export class ListPetsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){
         this.petService
-        .deletePet(this.clickedRow.id).subscribe( () => setTimeout(() =>{ window.location.reload() },2000));
+        .deletePet(this.clickedRow.id).subscribe( () => setTimeout(() =>{ window.location.reload() },1000));
         this._snackBar.open("Selected Pet Was Deleted!", 'Sounds good!',{
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
