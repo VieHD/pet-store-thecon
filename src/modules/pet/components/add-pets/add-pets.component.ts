@@ -44,7 +44,7 @@ export class AddPetsComponent implements OnInit {
       value: {
         id : petIdControl,
         name: petNameControl,
-        status: stateControl,
+        status: stateControl.toLocaleLowerCase(),
 
       },
     };
