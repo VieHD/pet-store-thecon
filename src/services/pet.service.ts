@@ -22,4 +22,8 @@ export class PetService {
     return this.httpClient.post(this.BASE_URL, newPet)
   }
 
+  editPet(editPet: Pet){
+    return this.httpClient.put(this.BASE_URL, editPet);
+  }
+
 }

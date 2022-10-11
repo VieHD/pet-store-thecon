@@ -33,7 +33,6 @@ export class AddPetsComponent implements OnInit {
   // }
 
   onAddPet(){
-    console.log(this.newPetForm.value);
     const {
       petNameControl,
       stateControl,

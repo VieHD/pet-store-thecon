@@ -1,1 +1,41 @@
-<p>edit-pets works!</p>
+
+<div class="add-pet-container">
+    <h1>Add Pet</h1>
+    <form (ngSubmit)="onEditPet()" [formGroup]="editPetForm" class="new-pet-form">
+    <mat-form-field appearance="fill" class="new-pet">
+      <mat-label>Enter Pet Name:</mat-label>
+      <input
+        matInput
+        type="string"
+        id="name"
+        [formControlName]="'petNameControl'"
+        placeholder="Pet Name"
+      />
+      <mat-error>Please enter Pet Name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="new-pet">
+        <mat-label>Enter Pet ID:</mat-label>
+        <input
+          matInput
+          type="number"
+          id="id"
+          [formControlName]="'petIdControl'"
+          placeholder="Pet Id"
+        />
+        <mat-error>Please enter Pet ID</mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill" class="new-pet">
+        <mat-label>Status:</mat-label>
+        <mat-select [formControlName]="'stateControl'">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let state of states" [value]="state">
+                {{ state }}
+            </mat-option>
+        </mat-select>
+        <mat-error>Please enter Status</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" >Add Pet</button>
+  </form>
+</div>

@@ -32,7 +32,7 @@
             <button (click)="onClick()" mat-icon-button aria-label="Example icon-button with a heart icon">
             <mat-icon>assignment</mat-icon>
             </button>
-            <button (click)="onClick()" mat-icon-button aria-label="Example icon-button with a heart icon">
+            <button (click)="onEditClick()" mat-icon-button aria-label="Example icon-button with a heart icon">
             <mat-icon>edit</mat-icon>
             </button>
             <button (click)="onClick()" mat-icon-button aria-label="Example icon-button with a heart icon">
@@ -42,6 +42,6 @@
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row (click)="clickedRow.add(row)" *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
+      <mat-row (click)="clickedRow = (row)" *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
     </mat-table>
   </div>
