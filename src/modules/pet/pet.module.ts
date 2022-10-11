@@ -4,7 +4,6 @@ import { ListPetsComponent } from './components/list-pets/list-pets.component';
 import { AddPetsComponent } from './components/add-pets/add-pets.component';
 import { EditPetsComponent } from './components/edit-pets/edit-pets.component';
 import { ShowPetsComponent } from './components/show-pets/show-pets.component';
-import { DeletePetsComponent } from './components/delete-pets/delete-pets.component';
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +13,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -23,7 +23,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AddPetsComponent,
     EditPetsComponent,
     ShowPetsComponent,
-    DeletePetsComponent,
     DialogComponent
   ],
   imports: [
@@ -36,8 +35,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  exports: [AddPetsComponent, DialogComponent],
+  exports: [ DialogComponent],
 })
 export class PetModule { }

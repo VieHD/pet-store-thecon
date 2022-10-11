@@ -4,6 +4,11 @@ import { FormControl, Validators, FormGroup } from "@angular/forms";
 import { Pet } from 'src/models/pet.model';
 import { PetService } from 'src/services/pet.service';
 import { state } from 'src/modules/shared/constante';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-pets',
@@ -12,9 +17,13 @@ import { state } from 'src/modules/shared/constante';
 })
 export class AddPetsComponent implements OnInit {
   newPetForm!: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(
     private petService: PetService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
     ) {
     this.newPetForm = new FormGroup({
       petNameControl : new FormControl(null, Validators.required),
@@ -27,10 +36,6 @@ export class AddPetsComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
-  // openDialog(): void{
-  //   this.dialog.open(DialogComponent, {})
-  // }
 
   onAddPet(){
     const {
@@ -54,6 +59,10 @@ export class AddPetsComponent implements OnInit {
         ...newPet.value
       })
       .subscribe(() => this.router.navigate(["/list"]));
+      this._snackBar.open('New Pet Added Succesfully!', 'Sounds good!',{
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     }
   }
 

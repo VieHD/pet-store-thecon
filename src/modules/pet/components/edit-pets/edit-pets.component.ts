@@ -5,6 +5,11 @@ import { Pet } from 'src/models/pet.model';
 import { PetService } from 'src/services/pet.service';
 import { state } from 'src/modules/shared/constante';
 import { ActivatedRoute } from "@angular/router";
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-pets',
@@ -14,10 +19,14 @@ import { ActivatedRoute } from "@angular/router";
 export class EditPetsComponent implements OnInit {
 
   editPetForm!: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(
     private petService: PetService,
     private router: Router,
     private currentRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar
     ) {
     this.editPetForm = new FormGroup({
       petNameControl : new FormControl(null, Validators.required, ),
@@ -54,6 +63,10 @@ export class EditPetsComponent implements OnInit {
         ...editPet.value
       })
       .subscribe(() => this.router.navigate(["/list"]));
+      this._snackBar.open('Pet Was Edited Succesfully!', 'Sounds good!',{
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     }
   }
 }

@@ -1,6 +1,6 @@
 
 <div class="add-pet-container">
-    <h1>Add Pet</h1>
+    <h1>Edit Pet</h1>
     <form (ngSubmit)="onEditPet()" [formGroup]="editPetForm" class="new-pet-form">
     <mat-form-field appearance="fill" class="new-pet">
       <mat-label>Enter Pet Name:</mat-label>
@@ -36,6 +36,6 @@
         </mat-select>
         <mat-error>Please enter Status</mat-error>
       </mat-form-field>
-      <button mat-raised-button color="accent" >Add Pet</button>
+      <button mat-raised-button color="accent" >Edit Pet</button>
   </form>
 </div>

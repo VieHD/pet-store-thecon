@@ -3,5 +3,5 @@ const state = ['Available', 'Pending', 'Sold'];
 
 export{
     displayedColumns,
-    state
+    state,
 }

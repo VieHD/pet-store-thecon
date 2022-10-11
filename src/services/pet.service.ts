@@ -26,4 +26,14 @@ export class PetService {
     return this.httpClient.put(this.BASE_URL, editPet);
   }
 
+  deletePet(id: number){
+    console.log(this.BASE_URL + "/" + id)
+    return this.httpClient.delete(this.BASE_URL + "/" + id, {
+      params: {
+        petid: `"${id}"`
+      }
+      
+    });
+  }
+
 }
