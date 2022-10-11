@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from 'src/models/pet.model';
 import { PetService } from 'src/services/pet.service';
+import { displayedColumns, state } from 'src/modules/shared/constante';
 
 @Component({
   selector: 'app-list-pets',
@@ -8,23 +9,26 @@ import { PetService } from 'src/services/pet.service';
   styleUrls: ['./list-pets.component.css']
 })
 export class ListPetsComponent implements OnInit {
-  
-  displayedColumns = ['index', 'name', 'status', 'actions'];
+  selectedValue: string | undefined;
+  states = state;
+  displayedColumns = displayedColumns;
   pets!: Pet[];
   clickedRow = new Set<Pet>();
 
   constructor(private petService: PetService) { }
 
   ngOnInit(): void {
-    this.petService
-    .getAllPets().subscribe((data) => { 
-      console.log(data)
-      //@ts-ignore
-      this.pets = data});
-    console.log(this.pets)
   }
+  
   onClick(){
     console.log(this.clickedRow)
+  }
+  onChange(selectedValue : string){
+    this.petService
+    .filterPetsByState(selectedValue)
+    .subscribe((data) => { 
+      //@ts-ignore
+      this.pets = data});
   }
 
 }

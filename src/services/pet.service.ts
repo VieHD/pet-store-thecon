@@ -7,13 +7,19 @@ import { Pet } from 'src/models/pet.model';
 })
 export class PetService {
 
-  BASE_URL = 'https://petstore.swagger.io/v2/pet/findByStatus?status='
+  BASE_URL = 'https://petstore.swagger.io/v2/pet'
+  BASE_URL_FILTER = 'https://petstore.swagger.io/v2/pet/findByStatus?status='
   
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPets(){
-    return this.httpClient.get<Pet>(this.BASE_URL+"available")
+
+  filterPetsByState(selectedValue : string){
+    return this.httpClient.get<Pet>(this.BASE_URL_FILTER+selectedValue.toLocaleLowerCase())
+  }
+
+  addNewPet(newPet: Pet){
+    return this.httpClient.post(this.BASE_URL, newPet)
   }
 
 }

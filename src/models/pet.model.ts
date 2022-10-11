@@ -1,15 +1,22 @@
 interface IPet {
-    category?: {};
-    id : number;
+  category?: {
+    id: number;
     name: string;
-    photoUrls?: string[];
-    status: string;
-    tags? : [{}];
+  };
+  id: number;
+  name: string;
+  photoUrls?: string[];
+  status: string;
+  tags?: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
 }
 
 export class Pet implements IPet {
-    id = 0;
-    name = '';
-    status = '';
-
+  id = 0;
+  name = '';
+  status = '';
 }

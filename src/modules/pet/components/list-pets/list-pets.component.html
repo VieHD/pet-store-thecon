@@ -1,4 +1,14 @@
 <div class="pet-table-container mat-elevation-z8">
+
+  <mat-form-field appearance="fill">
+  <mat-label>Filter by Status</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="state" (ngModelChange)="onChange($event)">
+      <mat-option *ngFor="let state of states" [value]="state">
+        {{state}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
     <mat-table #table [dataSource]="pets">
 
       <ng-container matColumnDef="index">

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { FormControl, Validators, FormGroup } from "@angular/forms";
+import { Pet } from 'src/models/pet.model';
+import { PetService } from 'src/services/pet.service';
+import { state } from 'src/modules/shared/constante';
 
 @Component({
   selector: 'app-add-pets',
@@ -8,19 +12,21 @@ import { FormControl, Validators, FormGroup } from "@angular/forms";
 })
 export class AddPetsComponent implements OnInit {
   newPetForm!: FormGroup;
-  constructor() {
+  constructor(
+    private petService: PetService,
+    private router: Router
+    ) {
     this.newPetForm = new FormGroup({
       petNameControl : new FormControl(null, Validators.required),
       stateControl: new FormControl('Available', Validators.required),
       petIdControl : new FormControl(null, Validators.required),
     });
    }
+   states = state;
 
   ngOnInit(): void {
     
   }
-
-  stats = ['Available', 'Pending', 'Sold']
 
   // openDialog(): void{
   //   this.dialog.open(DialogComponent, {})
@@ -28,6 +34,28 @@ export class AddPetsComponent implements OnInit {
 
   onAddPet(){
     console.log(this.newPetForm.value);
+    const {
+      petNameControl,
+      stateControl,
+      petIdControl,
+    } = this.newPetForm.value;
+
+    const newPet = {
+      value: {
+        id : petIdControl,
+        name: petNameControl,
+        status: stateControl,
+
+      },
+    };
+
+    if(this.newPetForm.valid){
+      this.petService
+      .addNewPet({
+        ...newPet.value
+      })
+      .subscribe(() => this.router.navigate(["/list"]));
+    }
   }
 
 }
