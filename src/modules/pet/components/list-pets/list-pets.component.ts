@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Pet } from 'src/models/pet.model';
-import { PetService } from 'src/services/pet.service';
-import { displayedColumns, state } from 'src/modules/shared/constante';
 import { Router } from "@angular/router";
 import {
   MatSnackBar,
@@ -9,7 +6,11 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
+
 import { DialogComponent } from 'src/modules/pet/dialog/dialog.component';
+import { Pet } from 'src/models/pet.model';
+import { PetService } from 'src/services/pet.service';
+import { displayedColumns, state } from 'src/modules/shared/constante';
 
 @Component({
   selector: 'app-list-pets',
@@ -34,11 +35,10 @@ export class ListPetsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onClick(){
-    console.log(this.clickedRow)
-  }
   onViewClick(){
-    console.log(this.clickedRow)
+    if(this.clickedRow.id != undefined){
+      this.router.navigate(["/view",this.clickedRow.id])
+    }
   }
   onEditClick() {
     if(this.clickedRow.id != undefined){

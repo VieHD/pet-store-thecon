@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormControl, Validators, FormGroup } from "@angular/forms";
-import { Pet } from 'src/models/pet.model';
-import { PetService } from 'src/services/pet.service';
-import { state } from 'src/modules/shared/constante';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+
+import { PetService } from 'src/services/pet.service';
+import { state } from 'src/modules/shared/constante';
 
 @Component({
   selector: 'app-add-pets',

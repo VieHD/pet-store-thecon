@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Pet } from 'src/models/pet.model';
 
 @Injectable({
@@ -27,13 +28,14 @@ export class PetService {
   }
 
   deletePet(id: number){
-    console.log(this.BASE_URL + "/" + id)
     return this.httpClient.delete(this.BASE_URL + "/" + id, {
       params: {
         petid: `"${id}"`
       }
-      
     });
   }
 
+  getPetById(id: number){
+    return this.httpClient.get(this.BASE_URL + "/" + id);
+  }
 }

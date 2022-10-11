@@ -1,1 +1,21 @@
-<p>show-pets works!</p>
+
+<mat-card ngDefaultControl [(ngModel)] = "petData" class="pet-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{petData.name}}</mat-card-title>
+      <mat-card-subtitle *ngIf="petData.category != undefined; else elseBlockCategory">{{petData.category.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://random.dog/851f1e84-d904-4f79-9cf6-bdf286780a05.jpg" alt="Photo of a Pet">
+    <mat-card-content>
+
+        <div>PetID:{{petData.id}}</div>
+        <div>PetStatus:{{petData.status}}</div>
+        <div *ngIf="petData.tags != undefined ; else elseBlockTags" >
+            <div *ngFor="let tag of petData.tags">TagName:{{tag.name}}</div>
+        </div>
+
+      <ng-template #elseBlockTags >This element dosen't have tags.</ng-template>
+      <ng-template #elseBlockCategory>This element dosen't have category.</ng-template>
+      <ng-template #elseBlockCategory>This element dosen't have category.</ng-template>
+    </mat-card-content>
+  </mat-card>
