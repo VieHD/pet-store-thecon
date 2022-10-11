@@ -8,6 +8,11 @@ import { DeletePetsComponent } from './components/delete-pets/delete-pets.compon
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -17,15 +22,20 @@ import { MatInputModule } from '@angular/material/input';
     AddPetsComponent,
     EditPetsComponent,
     ShowPetsComponent,
-    DeletePetsComponent
+    DeletePetsComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule
   ],
-  exports: [AddPetsComponent],
+  exports: [AddPetsComponent, DialogComponent],
 })
 export class PetModule { }

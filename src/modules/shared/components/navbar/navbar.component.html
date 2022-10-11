@@ -1,0 +1,22 @@
+<div class="navbar-container">
+    <div class="logo-container">LOGO</div>
+  
+    <div class="href-container">
+      <a
+      [routerLink]="['/list']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+        >List Pets</a
+      >
+      <a
+        [routerLink]="['/pet']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Add Pet</a
+      >
+      <a [routerLink]="['/view']" routerLinkActive="active-link">
+        View Pets</a
+      >
+      </div>
+</div>

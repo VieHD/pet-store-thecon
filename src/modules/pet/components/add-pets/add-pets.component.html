@@ -1,7 +1,7 @@
-<p>add-pets works!</p>
 
-<div>
-  <form (ngSubmit)="onAddPet()" [formGroup]="newPetForm" class="new-pet-form">
+<div class="add-pet-container">
+    <h1>Add Pet</h1>
+    <form (ngSubmit)="onAddPet()" [formGroup]="newPetForm" class="new-pet-form">
     <mat-form-field appearance="fill" class="new-pet">
       <mat-label>Enter Pet Name:</mat-label>
       <input
@@ -9,10 +9,33 @@
         type="string"
         id="name"
         [formControlName]="'petNameControl'"
-        formControlName="petNameControl"
         placeholder="Pet Name"
       />
-      <mat-error>Error</mat-error>
+      <mat-error>Please enter Pet Name</mat-error>
     </mat-form-field>
+
+    <mat-form-field appearance="fill" class="new-pet">
+        <mat-label>Enter Pet ID:</mat-label>
+        <input
+          matInput
+          type="number"
+          id="id"
+          [formControlName]="'petIdControl'"
+          placeholder="Pet Id"
+        />
+        <mat-error>Please enter Pet ID</mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill" class="new-pet">
+        <mat-label>Status:</mat-label>
+        <mat-select [formControlName]="'stateControl'">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let state of stats" [value]="state">
+                {{ state }}
+            </mat-option>
+        </mat-select>
+        <mat-error>Please enter Status</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" >Add Pet</button>
   </form>
 </div>

@@ -1,0 +1,22 @@
+table{
+    background-color: rgba(48,48,48,255);
+}
+.pet-table-container{
+    width: 80%;
+    margin: 5% auto;
+}
+.table-header{
+    background-color:green ;
+    font-size: 1.15em;
+    width: 50%;
+  }
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
